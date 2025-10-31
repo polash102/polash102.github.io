@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Md. Saymon Hosen Polash — Machine Learning Engineer</title>
+  <meta name="description" content="Portfolio of Md. Saymon Hosen Polash — Machine Learning Engineer, TA, and researcher." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <body>
+  <!-- animated particle background -->
+  <canvas id="bgDots" aria-hidden="true"></canvas>
+
+  <!-- Header / Nav -->
+  <header class="header">
+    <div id="progress"></div>
+
+    <a class="brand" href="#home">Polash</a>
+    <nav class="nav" id="nav">
+      <a href="#home" class="nav-link active">Home</a>
+      <a href="#about" class="nav-link">About</a>
+      <a href="#skills" class="nav-link">Skills</a>
+      <a href="#experience" class="nav-link">Experience</a>
+      <a href="#projects" class="nav-link">Projects</a>
+      <a href="#publications" class="nav-link">Publications</a>
+      <a href="#contact" class="nav-link">Contact</a>
+      <button class="btn btn-ghost" id="themeToggle" aria-label="Toggle theme">☾</button>
+    </nav>
+    <button class="burger" id="burger" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+
+  <!-- Hero -->
+  <section id="home" class="section hero">
+    <div class="hero-card">
+      <!-- you changed the path; keeping it -->
+      <!-- old: <img class="avatar" src="assets/polash.jpg" alt="Md. Saymon Hosen Polash" /> -->
+       <div class="avatar-wrap" id="avatarWrap" title="Click to enlarge">
+        <img class="avatar big" src="assets/polash.jpg" alt="Md. Saymon Hosen Polash" />
+         <span class="avatar-glow"></span>
+       </div>
+
+      <div class="hero-text">
+        <h1>Md. Saymon Hosen <span>Polash</span></h1>
+        <!-- old: <p class="tagline">Machine Learning Engineer …</p> -->
+          <p class="tagline"><span id="type"></span></p>
+
+        <div class="cta-wrap">
+          <a class="btn" href="#contact">Hire Me</a>
+          <a class="btn btn-ghost" href="#projects">View Projects</a>
+          <!-- open CV and auto-print -->
+          <a class="btn btn-outline" href="assets/cv/Polash-CV.html?print=1">Download CV</a>
+        </div>
+
+        <ul class="quick-facts">
+          <li>📍 Bangladesh</li>
+          <li>✉️ <a href="mailto:polash3063013@gmail.com">polash3063013@gmail.com</a></li>
+          <li>📞 <a href="tel:+8801568194233">(+88) 01568194233</a></li>
+        </ul>
+
+        <div class="socials">
+          <a class="chip" href="https://github.com/polash102" target="_blank" rel="noopener">GitHub</a>
+          <a class="chip" href="https://www.linkedin.com/in/md-saymon-hosen-polash-89703b244?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" rel="noopener">LinkedIn</a>
+          <a class="chip" href="https://www.researchgate.net/profile/Mdsaymon-Polash?ev=hdr_xprf" target="_blank" rel="noopener">ResearchGate</a>
+          <a class="chip" href="https://www.facebook.com/share/1D3u6Bg4Z3/" target="_blank" rel="noopener">Facebook</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+ <section id="about" class="section">
+  <h2 class="section-title">About</h2>
+
+  <p class="lead">
+    I’m an undergraduate student in the <strong>Department of Computer Science & Engineering</strong> at
+    <strong>East West University, Dhaka, Bangladesh</strong>. I specialize in <strong>machine learning</strong> for
+    <strong>security</strong>, <strong>medical image analysis</strong>, and the <strong>analysis of medical data</strong>,
+    with the goal of building practical, AI-based solutions to complex problems. I have one SCIE/Scopus-indexed
+    publication and several peer-reviewed conference papers (published / under review). My research explores ways to
+    improve model performance and data processing so that decisions are accurate, robust, and interpretable. With a
+    strong passion for research, I actively seek opportunities to learn and deliver high-impact projects in
+    <strong>AI</strong> and <strong>data-driven systems</strong>.
+  </p>
+
+  <div class="about-grid">
+    <div class="about-card hover-lift">
+      <h3>Academic History</h3>
+      <ul>
+        <li><strong>B.Sc. in Computer Science & Engineering (2021–2026)</strong><br>
+          East West University, Dhaka, Bangladesh — CGPA: <strong>3.00/4.00</strong></li>
+        <li><strong>HSC (Science), 2020</strong><br>
+          Rangpur Government College — GPA: <strong>5.00/5.00</strong></li>
+        <li><strong>SSC (Science), 2018</strong><br>
+          Ranisankail Pilot High School — GPA: <strong>5.00/5.00</strong></li>
+      </ul>
+    </div>
+
+    <div class="about-card hover-lift">
+      <h3>Research Interests</h3>
+      <ul class="checklist">
+        <li>Machine Learning in Cybersecurity</li>
+        <li>Machine Learning in Image Processing</li>
+        <li>Health Informatics</li>
+      </ul>
+      <p class="muted">I’m especially focused on ML for stronger security systems and improved healthcare outcomes.</p>
+    </div>
+
+    <div class="about-card hover-lift">
+      <h3>What I Do</h3>
+      <ul class="checklist">
+        <li>End-to-end ML pipelines (EDA → features → training → evaluation → deploy)</li>
+        <li>Deep learning for vision (CNNs) and NLP (Transformers)</li>
+        <li>Experimental design, reproducibility, and interpretability</li>
+        <li>Technical writing & publication preparation</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+
+  <!-- Skills -->
+  <section id="skills" class="section">
+    <h2 class="section-title">Skills</h2>
+    <div class="skills-grid">
+      <div class="skill-card hover-glow">
+        <h4>Languages & Tools</h4>
+        <div class="chips">
+          <span class="chip glow">Python</span><span class="chip glow">R</span><span class="chip glow">SQL</span>
+          <span class="chip glow">Git</span><span class="chip glow">Linux</span><span class="chip glow">Jupyter</span>
+        </div>
+      </div>
+      <div class="skill-card hover-glow">
+        <h4>Data Science</h4>
+        <div class="chips">
+          <span class="chip glow">Pandas</span><span class="chip glow">NumPy</span>
+          <span class="chip glow">Matplotlib</span><span class="chip glow">Seaborn</span>
+          <span class="chip glow">scikit-learn</span>
+        </div>
+      </div>
+      <div class="skill-card hover-glow">
+        <h4>Deep Learning</h4>
+        <div class="chips">
+          <span class="chip glow">TensorFlow</span><span class="chip glow">Keras</span>
+          <span class="chip glow">PyTorch</span><span class="chip glow">CNN</span>
+          <span class="chip glow">NLP / Transformers</span>
+        </div>
+      </div>
+      <div class="skill-card hover-glow">
+        <h4>Other</h4>
+        <div class="chips">
+          <span class="chip glow">Experiment Tracking</span><span class="chip glow">Research Writing</span>
+          <span class="chip glow">Visualization</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience -->
+  <section id="experience" class="section">
+    <h2 class="section-title">Experience</h2>
+    <div class="timeline">
+      <div class="tl-item hover-lift">
+        <div class="tl-dot"></div>
+        <div class="tl-content">
+          <h3>Undergraduate Teaching Assistant</h3>
+          <span class="muted">1 year 6 months</span>
+          <p>Led lab sessions, graded assignments, and mentored projects in Python, data analysis, and AI.</p>
+          <ul>
+            <li>Designed practice notebooks & mini-projects.</li>
+            <li>Held office hours; improved pass rates and engagement.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="tl-item hover-lift">
+        <div class="tl-dot"></div>
+        <div class="tl-content">
+          <h3>Machine Learning Engineer (Student Projects & Research)</h3>
+          <span class="muted">Ongoing</span>
+          <p>Built robust ML/DL pipelines from data collection to deployment. Focus on reproducibility and clarity.</p>
+          <ul>
+            <li>Model selection & evaluation with cross-validation and ablations.</li>
+            <li>Clean, well-documented code and reports.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section id="projects" class="section">
+    <h2 class="section-title">Projects</h2>
+    <div class="cards">
+      <article class="card hover-lift">
+        <h3>Student Performance Prediction</h3>
+        <p>Predict academic outcomes using socioeconomic & behavioral features. Emphasis on interpretability.</p>
+        <p class="stack">Python · Pandas · scikit-learn · SHAP</p>
+        <div class="card-actions">
+          <a class="btn btn-ghost" href="#" target="_blank" rel="noopener">Repo</a>
+        </div>
+      </article>
+
+      <article class="card hover-lift">
+        <h3>Medical Image Classification (CNN)</h3>
+        <p>CNN-based classification pipeline for early disease detection with careful augmentation and eval.</p>
+        <p class="stack">TensorFlow/Keras · OpenCV · Grad-CAM</p>
+        <div class="card-actions">
+          <a class="btn btn-ghost" href="#" target="_blank" rel="noopener">Repo</a>
+        </div>
+      </article>
+
+      <!-- New: Chatbot project -->
+      <article class="card hover-lift">
+        <h3>Dengue Prediction Chatbot</h3>
+        <img src="assets/image.png" alt="Dengue Prediction Chatbot" style="border-radius:12px;border:1px solid var(--ring);aspect-ratio:16/9;object-fit:cover;">
+        <p>An interactive assistant that predicts dengue risk based on user inputs and model outputs.</p>
+        <p class="stack">Hugging Face Space · Python · scikit-learn</p>
+        <div class="card-actions">
+          <a class="btn" href="https://huggingface.co/spaces/polash7899/Dengue_prediction" target="_blank" rel="noopener">Open Chatbot</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- Publications -->
+  <section id="publications" class="section">
+    <h2 class="section-title">Publications</h2>
+
+    <div class="pub-columns">
+      <div class="pub-col">
+        <h3 class="subtle-title">Published</h3>
+        <ul class="pub-list">
+          <li class="hover-lift">
+            <strong>[Conference]</strong>
+            <em>Enhancing IoT Cyber Attack Detection in the Presence of Highly Imbalanced Data</em>.
+            <a class="link" href="https://www.researchgate.net/publication/391856980_Enhancing_IoT_Cyber_Attack_Detection_in_the_Presence_of_Highly_Imbalanced_Data" target="_blank" rel="noopener">View Paper</a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="pub-col">
+        <h3 class="subtle-title">Under Review</h3>
+        <ul class="pub-list">
+          <li class="hover-lift"><strong>[Conference]</strong> <em>Mango Leaf Disease Classification</em></li>
+          <li class="hover-lift"><strong>[Conference]</strong> <em>An Interpretable DenseNet-201 Framework Leveraging Grad-CAM for Accurate and Robust Grape Leaf Disease Detection</em></li>
+          <li class="hover-lift"><strong>[IJITCS Journal]</strong> <em>An AI-Driven Web Application for Anemia Detection: Integrating Optimized XGBoost with Explainability</em></li>
+        </ul>
+      </div>
+
+      <div class="pub-col">
+        <h3 class="subtle-title">Currently Working On</h3>
+        <ul class="pub-list">
+          <li class="hover-lift"><em>Review paper on Alzheimer’s Disease (AI/DL focus)</em></li>
+          <li class="hover-lift"><em>Brain Tumor Detection from MRI Images</em></li>
+          <li class="hover-lift"><em>Black Gram Leaf Disease Classification</em></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="section">
+    <h2 class="section-title">Contact</h2>
+    <div class="contact-grid">
+      <div class="contact-card hover-lift">
+        <h3>Let’s work together</h3>
+        <p class="muted">Open to research collaborations, internships, and ML/DL projects.</p>
+        <ul class="contact-list">
+          <li>✉️ <a href="mailto:polash3063013@gmail.com">polash3063013@gmail.com</a></li>
+          <li>📞 <a href="tel:+8801568194233">(+88) 01568194233</a></li>
+          <li>🌐
+            <a href="https://github.com/polash102" target="_blank" rel="noopener">GitHub</a> ·
+            <a href="https://www.linkedin.com/in/md-saymon-hosen-polash-89703b244?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" rel="noopener">LinkedIn</a> ·
+            <a href="https://www.researchgate.net/profile/Mdsaymon-Polash?ev=hdr_xprf" target="_blank" rel="noopener">ResearchGate</a> ·
+            <a href="https://www.facebook.com/share/1D3u6Bg4Z3/" target="_blank" rel="noopener">Facebook</a>
+          </li>
+        </ul>
+      </div>
+      <form class="contact-form hover-lift" onsubmit="return sendMail(event)">
+        <div class="form-row">
+          <input type="text" id="name" placeholder="Full name" required />
+          <input type="email" id="email" placeholder="Email address" required />
+        </div>
+        <textarea id="message" rows="5" placeholder="Your message" required></textarea>
+        <button class="btn" type="submit">Send</button>
+        <p id="formStatus" class="muted tiny"></p>
+      </form>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>© <span id="year"></span> Md. Saymon Hosen Polash. All rights reserved.</p>
+  </footer>
+
+  <script src="script.js"></script>
+
+  <!-- floating CTA -->
+<a href="#contact" class="fab-cta" title="Let’s talk">✉️</a>
+
+<!-- avatar lightbox -->
+<div id="lightbox" class="lightbox" aria-hidden="true">
+  <div class="lightbox-backdrop"></div>
+  <img src="assets/polash.jpg" alt="Md. Saymon Hosen Polash — full size" class="lightbox-img">
+  <button class="lightbox-close" aria-label="Close">×</button>
+</div>
+
+
+</body>
+</html>
