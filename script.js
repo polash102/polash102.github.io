@@ -30,22 +30,26 @@ const observer = new IntersectionObserver((entries) => {
 },{ threshold: 0.5 });
 sections.forEach(s => observer.observe(s));
 
-// theme toggle
-const themeToggle = document.getElementById('themeToggle');
-themeToggle?.addEventListener('click', () => {
-  document.documentElement.classList.toggle('light');
-  themeToggle.textContent = document.documentElement.classList.contains('light') ? '☀' : '☾';
-});
-
-// contact “send” without backend (opens mail client)
+// contact “send” — open Gmail compose (fallback to mailto)
 function sendMail(e){
   e.preventDefault();
   const name = document.getElementById('name').value.trim();
   const email = document.getElementById('email').value.trim();
   const message = document.getElementById('message').value.trim();
-  const body = encodeURIComponent(`Hi Polash,\n\n${message}\n\n— ${name}\n${email}`);
-  window.location.href = `mailto:polash3063013@gmail.com?subject=Portfolio%20Contact&body=${body}`;
-  document.getElementById('formStatus').textContent = "Opening your email app…";
+
+  const subject = 'Portfolio Contact';
+  const body = `Hi Polash,%0A%0A${encodeURIComponent(message)}%0A%0A— ${encodeURIComponent(name)}%0A${encodeURIComponent(email)}`;
+
+  // Gmail compose in new tab
+  const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=polash3063013@gmail.com&su=${encodeURIComponent(subject)}&body=${body}`;
+  const win = window.open(gmailUrl, '_blank');
+
+  // Fallback: if popup blocked, use mailto
+  if (!win) {
+    window.location.href = `mailto:polash3063013@gmail.com?subject=${encodeURIComponent(subject)}&body=${body}`;
+  }
+
+  document.getElementById('formStatus').textContent = "Opening Gmail…";
   return false;
 }
 window.sendMail = sendMail;
@@ -68,17 +72,6 @@ document.querySelectorAll('.chip').forEach(ch => {
     setTimeout(() => ch.classList.remove('active'), 1500);
   });
 });
-
-
-
-
-
-
-
-
-
-
-
 
 
 /* ===========================
@@ -208,8 +201,6 @@ document.querySelectorAll('.btn, .btn-outline, .btn-ghost').forEach(btn=>{
   };
   activeSync(); addEventListener('resize', activeSync, {passive:true});
 })();
-
-
 
 /* =========================
    1) Typing Tagline Rotator
