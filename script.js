@@ -20,6 +20,7 @@ links.forEach(l => {
     if (window.innerWidth < 680) nav.style.display = 'none';
   });
 });
+
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if(entry.isIntersecting){
@@ -28,27 +29,24 @@ const observer = new IntersectionObserver((entries) => {
     }
   });
 },{ threshold: 0.5 });
+
 sections.forEach(s => observer.observe(s));
 
-// contact “send” — open Gmail compose (fallback to mailto)
+// contact "send" — open Gmail compose (fallback to mailto)
 function sendMail(e){
   e.preventDefault();
   const name = document.getElementById('name').value.trim();
   const email = document.getElementById('email').value.trim();
   const message = document.getElementById('message').value.trim();
-
   const subject = 'Portfolio Contact';
   const body = `Hi Polash,%0A%0A${encodeURIComponent(message)}%0A%0A— ${encodeURIComponent(name)}%0A${encodeURIComponent(email)}`;
-
   // Gmail compose in new tab
   const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=polash3063013@gmail.com&su=${encodeURIComponent(subject)}&body=${body}`;
   const win = window.open(gmailUrl, '_blank');
-
   // Fallback: if popup blocked, use mailto
   if (!win) {
     window.location.href = `mailto:polash3063013@gmail.com?subject=${encodeURIComponent(subject)}&body=${body}`;
   }
-
   document.getElementById('formStatus').textContent = "Opening Gmail…";
   return false;
 }
@@ -56,6 +54,7 @@ window.sendMail = sendMail;
 
 // footer year
 document.getElementById('year').textContent = new Date().getFullYear();
+
 // 3D "press to front" micro-interaction for nav links, chips, cards
 function pressEffect(el) {
   el.addEventListener('mousedown', () => el.classList.add('pressed'));
@@ -63,7 +62,7 @@ function pressEffect(el) {
     el.addEventListener(evt, () => el.classList.remove('pressed'))
   );
 }
-document.querySelectorAll('.nav-link, .chip, .card, .skill-card, .about-card').forEach(pressEffect);
+document.querySelectorAll('.nav-link, .chip, .card, .skill-card, .about-card, .supervisor-card, .cert-card').forEach(pressEffect);
 
 // When a chip is clicked, give it an active glow for 1.5s
 document.querySelectorAll('.chip').forEach(ch => {
@@ -73,7 +72,6 @@ document.querySelectorAll('.chip').forEach(ch => {
   });
 });
 
-
 /* ===========================
    3D-ish particle background
    =========================== */
@@ -82,7 +80,6 @@ document.querySelectorAll('.chip').forEach(ch => {
   if(!c) return;
   const ctx = c.getContext('2d', { alpha:true });
   let w, h, pr, dots, raf;
-
   function resize(){
     pr = window.devicePixelRatio || 1;
     w = c.width = innerWidth * pr;
@@ -91,35 +88,27 @@ document.querySelectorAll('.chip').forEach(ch => {
     c.style.height = innerHeight + 'px';
     spawn();
   }
-
   function spawn(){
-    const count = Math.round((innerWidth * innerHeight)/18000); // density
+    const count = Math.round((innerWidth * innerHeight)/18000);
     dots = new Array(count).fill(0).map(()=>({
       x: Math.random()*w, y: Math.random()*h,
       vx: (Math.random()*2-1)*.12*pr, vy:(Math.random()*2-1)*.12*pr,
       r: (Math.random()*1.6+0.6)*pr,
     }));
   }
-
   function step(){
     ctx.clearRect(0,0,w,h);
-    // glow
     ctx.shadowColor = 'rgba(120, 240, 255, 0.25)';
     ctx.shadowBlur = 6*pr;
-
-    // draw & move
     for(const d of dots){
       d.x += d.vx; d.y += d.vy;
       if(d.x<0||d.x>w) d.vx*=-1;
       if(d.y<0||d.y>h) d.vy*=-1;
-
       ctx.beginPath();
-      ctx.fillStyle = 'rgba(137,247,254,0.9)'; // cyan
+      ctx.fillStyle = 'rgba(137,247,254,0.9)';
       ctx.arc(d.x, d.y, d.r, 0, Math.PI*2);
       ctx.fill();
     }
-
-    // soft connections
     ctx.shadowBlur = 0;
     for(let i=0;i<dots.length;i++){
       for(let j=i+1;j<dots.length;j++){
@@ -134,7 +123,6 @@ document.querySelectorAll('.chip').forEach(ch => {
     }
     raf = requestAnimationFrame(step);
   }
-
   resize(); step();
   addEventListener('resize', ()=>{ cancelAnimationFrame(raf); resize(); step(); }, {passive:true});
 })();
@@ -143,7 +131,7 @@ document.querySelectorAll('.chip').forEach(ch => {
    Reveal on scroll (sections/cards etc.)
    ====================================== */
 const revealTargets = document.querySelectorAll(
-  '.section, .card, .about-card, .skill-card, .tl-content'
+  '.section, .card, .about-card, .skill-card, .tl-content, .supervisor-card, .cert-card'
 );
 revealTargets.forEach(el => el.classList.add('reveal-start'));
 const revObs = new IntersectionObserver((entries)=>{
@@ -181,7 +169,6 @@ document.querySelectorAll('.btn, .btn-outline, .btn-ghost').forEach(btn=>{
   indicator.className = 'nav-indicator';
   nav.style.position = 'relative';
   nav.appendChild(indicator);
-
   const links = nav.querySelectorAll('.nav-link');
   function moveTo(el){
     const r = el.getBoundingClientRect();
@@ -194,7 +181,6 @@ document.querySelectorAll('.btn, .btn-outline, .btn-ghost').forEach(btn=>{
     l.addEventListener('mouseenter', ()=>moveTo(l));
     l.addEventListener('focus', ()=>moveTo(l));
   });
-  // sync with active section
   const activeSync = () => {
     const a = nav.querySelector('.nav-link.active') || links[0];
     if(a) moveTo(a);
@@ -208,13 +194,15 @@ document.querySelectorAll('.btn, .btn-outline, .btn-ghost').forEach(btn=>{
 (function(){
   const el = document.getElementById('type'); if(!el) return;
   const lines = [
-    "Machine Learning Engineer • CSE (B.Sc.)",
-    "Teaching Assistant • Research & Publications",
-    "Security • Medical Imaging • Health Informatics",
+    "B.Sc. CSE Graduate (Feb 2026) — CGPA 3.61",
+    "Graduate Teaching Assistant — MPS, EWU",
+    "Remote Research Assistant — MSIP Lab, South Korea",
+    "Precision AI in Healthcare | Medical Imaging",
+    "AI in Precision Agriculture | Cybersecurity",
     "Building ML systems with clarity & impact"
   ];
   const speed = 28, hold = 1100;
-  let i=0, p=0, dir=1; // dir: +1 typing, -1 deleting
+  let i=0, p=0, dir=1;
   function tick(){
     el.textContent = lines[i].slice(0, p);
     if(dir>0 && p === lines[i].length){ dir = -1; setTimeout(tick, hold); return; }
@@ -246,7 +234,6 @@ document.querySelectorAll('.btn, .btn-outline, .btn-ghost').forEach(btn=>{
   const lightbox = document.getElementById('lightbox');
   const img = lightbox?.querySelector('.lightbox-img');
   const close = lightbox?.querySelector('.lightbox-close');
-  // tilt
   wrap.addEventListener('mousemove', (e)=>{
     const r = wrap.getBoundingClientRect();
     const x = (e.clientX - (r.left+r.width/2)) / (r.width/2);
@@ -254,13 +241,15 @@ document.querySelectorAll('.btn, .btn-outline, .btn-ghost').forEach(btn=>{
     wrap.style.transform = `rotateY(${x*6}deg) rotateX(${y*-4}deg) translateY(-6px)`;
   });
   wrap.addEventListener('mouseleave', ()=>{ wrap.style.transform = ''; });
-  // lightbox
   wrap.addEventListener('click', ()=>{
     if(!lightbox) return;
     lightbox.setAttribute('aria-hidden','false');
   });
   close?.addEventListener('click', ()=> lightbox.setAttribute('aria-hidden','true'));
-  lightbox?.addEventListener('click', (e)=>{ if(e.target===lightbox || e.target.classList.contains('lightbox-backdrop')) lightbox.setAttribute('aria-hidden','true'); });
+  lightbox?.addEventListener('click', (e)=>{ 
+    if(e.target===lightbox || e.target.classList.contains('lightbox-backdrop')) 
+      lightbox.setAttribute('aria-hidden','true'); 
+  });
 })();
 
 /* ==================================================
@@ -273,7 +262,7 @@ document.querySelectorAll('.btn, .btn-outline, .btn-ghost').forEach(btn=>{
     const y = (ev.clientY - (r.top + r.height/2)) / (r.height/2);
     el.style.transform = `rotateY(${x*6}deg) rotateX(${y*-6}deg) translateY(-6px)`;
   };
-  const cards = document.querySelectorAll('.card, .skill-card');
+  const cards = document.querySelectorAll('.card, .skill-card, .supervisor-card');
   cards.forEach(c=>{
     c.addEventListener('mousemove', (e)=>tilt(c,e));
     c.addEventListener('mouseleave', ()=>{ c.style.transform=''; });
